@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xml>
+  <station>
+    <id>站点ID（唯一值,数字或GUID）</id>
+    <name>站点（单位）名称（汉字）</name>
+    <lonstr>经度（字符，如：114°45′30″E，用于界面显示）</lonstr>
+    <latstr>纬度（字符，如：64°45′30″N，用于界面显示）</latstr>
+    <lon>经度（数值，用于地图定位）</lon>
+    <lat>纬度（数值，用于地图定位）</lat>
+    <offsetlon>经度偏移值(数值默认传入 0 ，度单位)</offsetlon>
+    <offsetlat>纬度偏移值(数值默认传入 0 ，度单位)</offsetlat>
+    <color>站点（单位）名称显示颜色（只支持以下四种：red/gray/yellow/green）</color>
+    <desc></desc>
+    <items>
+      <item id="设备ID（唯一值,数字或GUID最好）" sid="站点ID" name="设备名称" color="red（显示颜色，表示设备的状态 ，只支持以下三种 red/gray/green）">
+        <option img="汇总统计.png(存放在images目录下)" callback="Total(回调的函数名称，尽量不要中文，防止乱码)" param="id（需要返回的设备属性名称，逗号分割支持多个，返回xml格式)">汇总统计（如：统计)</option>
+        <option img="制签异常统计.png(存放在images目录下)" callback="Total2(回调的函数名称，尽量不要中文，防止乱码)" param="id（需要返回的设备属性名称，逗号分割支持多个，返回xml格式">制签异常统计（如：统计)</option>
+        <option img="设备管理.png(存放在images目录下)" callback="Manager(回调的函数名称，尽量不要中文，防止乱码)" param="id（需要返回的设备属性名称，逗号分割支持多个，返回xml格式">设备管理（如：统计)</option>
+        <option img="设备管理.png(存放在images目录下)" callback="Manager(回调的函数名称，尽量不要中文，防止乱码)" param="id（需要返回的设备属性名称，逗号分割支持多个，返回xml格式">设备管理（如：统计)</option>
+      </item>
+      <item id="设备ID（唯一值,数字或GUID）" sid="站点ID2" name="设备名称2" color="gray（显示颜色，表示设备的状态 ，只支持以下三种 red/gray/green）">
+        <option img="汇总统计.png(存放在images目录下)" callback="Total(回调的函数名称，尽量不要中文，防止乱码)" param="id（需要返回的设备属性名称，逗号分割支持多个，返回xml格式)">汇总统计（如：统计)</option>
+        <option img="制签异常统计.png(存放在images目录下)" callback="Total2(回调的函数名称，尽量不要中文，防止乱码)" param="id（需要返回的设备属性名称，逗号分割支持多个，返回xml格式">制签异常统计（如：统计)</option>
+        <option img="设备管理.png(存放在images目录下)" callback="Manager(回调的函数名称，尽量不要中文，防止乱码)" param="id（需要返回的设备属性名称，逗号分割支持多个，返回xml格式">设备管理（如：统计)</option>
+        <option img="设备管理.png(存放在images目录下)" callback="Manager(回调的函数名称，尽量不要中文，防止乱码)" param="id（需要返回的设备属性名称，逗号分割支持多个，返回xml格式">设备管理（如：统计)</option>
+      </item>
+    </items>
+  </station>
+</xml>
+

@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv='X-UA-Compatible' content='IE=EmulateIE7' />
+    <title>GIS地理信息平台</title>
+
+    <script src="js/util_ex.js" type="text/javascript"></script>
+
+    <script src="js/utilspec.js" type="text/javascript"></script>
+
+    <script src="js/xmlHelper.js" type="text/javascript"></script>
+
+    <script src="js/jquery-1.7.1.min.js" type="text/javascript"></script>
+
+    <script src="OpenLayers/OpenLayers.js" type="text/javascript"></script>
+
+    <script src="OpenLayers/js/all.js" type="text/javascript"></script>
+
+    <script src="OpenLayers/js/GPS.js" type="text/javascript"></script>
+
+    <script src="OpenLayers/js/LTOverviewMap.js" type="text/javascript"></script>
+
+    <script src="OpenLayers/WebGIS.min.js" type="text/javascript"></script>
+
+    <script src="OpenLayers/Interface.js" type="text/javascript"></script>
+
+    <style type="text/css">
+        html, body
+        {
+            width: 100%;
+            height: 98%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+    <script type="text/javascript">;
+        var gis = GisObj("div_map");
+        gis._divID = "div_button";
+        var layerBase = null, layerPolygon = null;
+        var lonlats;
+        var clusterId = ''; //基站聚合层ID
+
+        //页面启动
+        window.onload = function (e) {
+            document.oncontextmenu = function () { return false; }    //搜索
+            var showoverview = getUrlParam("showoverview");
+            var path = getUrlParam("path");
+            var model = GetInt(getUrlParam("model"), 0);
+            var mapSource = GetInt(getUrlParam("mapsource"), 0);
+            var maxlevel = GetInt(getUrlParam("maxlevel"), 18);            
+            Init(13, lon, lat, path, maxlevel, showoverview, model, 0);
+        }
+
+        function SetDisplay(elem, display) {
+            if ($("#" + elem)) $("#" + elem).css("display", display ? "block" : "none");
+        }
+
+    </script>
+
+
+</head>
+<body>
+    <form id="form1">
+        <div id="div_map" style="width: 99%; height: 100%; text-align: center;">
+            <!--<div id="div2" style="border: solid 0px #999999; left: 50px; top: 20px; position: absolute; z-index: 1100;">
+                <select id="sltpolygon" class="slt" onchange="SltPolygonType(this.value);">
+                    <option value="0" selected="selected">工具</option>
+                    <option value="1" title="测量一段路线的距离">测距</option>
+                    <option value="2" title="测量一个范围的面积">测面积</option>
+                </select>
+                <input id="Button1" type="button" class="btn" value="清除" title="清除测距、侧面积对象" onclick="SltPolygonType('0');" />
+            </div>-->
+            <div id="div_button" style="border: solid 0px #999999; width: 99%; bottom: 10px; position: absolute; z-index: 1100;">
+            </div>
+            <!--<div id="div1" style="border: solid 0px #999999; width: 99%; bottom: 50px; position: absolute; z-index: 1100;">
+                <input type="button" value="test" onclick="alert(GetViewBounds());" />
+                <input type="button" value="test2" onclick="SetViewBounds(113, 22, 114.5, 24.5);" />
+            </div>-->
+            <!--<div id="div_lengend" style="background-color: White; float: right; border: solid 0px #999999; position: absolute; z-index: 5555; width: 16px; left: 165px; top: 22px; height: 16px; padding: 1px; display: block;">
+                <img alt="当前位置" src="OpenLayers/img/currlocal.png" title="当前位置" style="width: 16px; height: 16px" onclick="GetCurrPostion();" />
+            </div>-->
+        </div>
+        <!--   <div id="div_lengend1" style="background-color: White; float: right; border: solid 1px #999999; background-image: url(OpenLayers/img/zoom-world-mini.png); position: absolute; width: 15px; right: 12px; top: 2px; height: 15px; padding: 1px; display: block; z-index: 2200;"
+            onmouseout="SetDisplay('div_lengend',true);SetDisplay('div_lengend1',false);"
+            onmouseover="SetDisplay('div_lengend',true);SetDisplay('div_lengend1',false);">
+        </div>
+        <div id="div_lengend" style="background-color: White; float: right; border: solid 2px #999999; position: absolute; z-index: 5555; width: 210px; right: 12px; top: 2px; height: 400px; padding: 1px; display: none; z-index: 1100;"
+            onmouseout="SetDisplay('div_lengend1',true);SetDisplay('div_lengend',false);"
+            onmouseover="SetDisplay('div_lengend',true);SetDisplay('div_lengend1',false);">
+            <div id="info" style="text-align: left; border: 1px solid #fff; height: 100%; overflow: auto">
+                <div style="height: 45px; text-align: center; font-size: 10pt;">
+                    <div style="height: 20px; text-align: left; margin-top: 5px;">名称：<input type="text" style="width: auto;" id="txtName" maxlength="50" /></div>
+                    <div style="height: 20px; text-align: right; margin-top: 5px;">
+                        <a id="aSearch" href="javascript:void(0);" style="padding-right: 5px" onclick="SreachItemByParam()">查询</a>
+                    </div>
+                </div>
+                <div style="height: 20px; margin-top: 5px; text-align: center; border-bottom: solid 1px #999999">
+                    <b style="font-size: 10pt"><a style="" href="javascript:void(0);" onclick="SreachItemByParam()">异常</a>列表</b>
+                </div>
+                <div id="div_stinfo" style="border: 1px solid #fff; height: 300px; overflow: auto">
+                </div>
+
+            </div>
+        </div>-->
+    </form>
+</body>
+</html>
